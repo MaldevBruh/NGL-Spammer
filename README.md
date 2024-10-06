@@ -33,7 +33,7 @@ To use NGL Spammer, follow these steps:
 2. Run the script using Node.js:
 
 ```
-node ngl_spammer.js
+node index.js
 ```
 
 3. The script will prompt you for the following information:
