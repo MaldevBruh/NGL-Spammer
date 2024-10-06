@@ -2,20 +2,24 @@
 
 **Disclaimer: This tool is for educational purposes only. Use responsibly and ethically.**
 
-NGL Spammer is a Node.js script that allows you to send multiple messages to an NGL (Not Gonna Lie) account. This project is released under the MIT License.
+NGL Spammer is a Node.js script that allows you to send multiple messages to an NGL (Not Gonna Lie) user's profile. This project is intended for educational purposes to demonstrate how automated messaging systems can work.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Prerequisites
 
-Before running this script, make sure you have the following installed:
+Before you begin, ensure you have met the following requirements:
 
-- Node.js (version 12 or higher)
-- npm (Node Package Manager)
+* You have installed Node.js (version 12.0 or later)
+* You have a basic understanding of JavaScript and Node.js
 
 ## Installation
 
 1. Clone this repository or download the source code.
 2. Navigate to the project directory in your terminal.
-3. Install the required dependencies by running:
+3. Run the following command to install the required dependencies:
 
 ```
 npm install axios
@@ -23,46 +27,48 @@ npm install axios
 
 ## Usage
 
-To use the NGL Spammer:
+To use NGL Spammer, follow these steps:
 
 1. Open your terminal and navigate to the project directory.
 2. Run the script using Node.js:
 
 ```
-node index.js
+node ngl_spammer.js
 ```
 
-3. Follow the prompts:
-   - Enter the NGL username you want to send messages to.
-   - Enter the question or message you want to send.
-   - Enter the number of times you want to send the message.
+3. The script will prompt you for the following information:
+   - NGL Username: Enter the username of the NGL profile you want to send messages to.
+   - Question/Message: Enter the message you want to send repeatedly.
+   - Spam Amount: Enter the number of times you want to send the message.
 
 4. The script will start sending messages and display the results in the console.
 
-## Code Explanation
+## How it works
 
-The script does the following:
+1. The script uses the `axios` library to send POST requests to the NGL API.
+2. It generates a random UUID for each request to simulate different devices.
+3. If the script encounters a rate limit (429 status code), it will wait for a second before retrying.
+4. The script continues until it has sent the specified number of messages or encounters an unrecoverable error.
 
-1. Imports required modules: axios for HTTP requests, crypto for generating UUIDs, and readline for user input.
-2. Prompts the user for the NGL username, message, and spam amount.
-3. Constructs the necessary headers and form data for the NGL API request.
-4. Sends POST requests to the NGL API for the specified number of times.
-5. Logs the results of each request to the console.
+## Ethical Considerations
 
-## License
+This tool is designed for educational purposes to demonstrate how automated systems can interact with web APIs. It should not be used to harass, spam, or cause harm to others. Always respect the terms of service of the platforms you interact with and consider the impact of your actions on others.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## Troubleshooting
 
-## Disclaimer
+If you encounter any issues:
 
-This tool is intended for educational purposes only. Misuse of this script may violate NGL's terms of service or local laws. The authors and contributors are not responsible for any misuse or damage caused by this script.
+1. Make sure you have the latest version of Node.js installed.
+2. Check that you've installed the required `axios` package.
+3. Verify that you have a stable internet connection.
+4. If you're getting rate-limited frequently, try reducing the spam amount or introducing longer delays between requests.
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome. Feel free to check the issues page if you want to contribute.
+Contributions to this project are welcome. Please ensure that your code adheres to the project's coding standards and include appropriate tests for new features.
 
-## Support
+## Contact
 
-If you have any questions or need help using the script, please open an issue in the GitHub repository.
+If you have any questions or concerns about this project, please open an issue in the GitHub repository.
 
-Remember to use this tool responsibly and respect others' privacy and online spaces.
+Remember to use this tool responsibly and ethically.
