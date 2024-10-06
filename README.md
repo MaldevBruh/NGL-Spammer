@@ -29,7 +29,7 @@ To use the NGL Spammer:
 2. Run the script using Node.js:
 
 ```
-npm start
+node index.js
 ```
 
 3. Follow the prompts:
