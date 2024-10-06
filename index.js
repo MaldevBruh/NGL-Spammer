@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 const input = (query) => new Promise(resolve => rl.question(query, resolve));
 
-(async() => {
+(async () => {
   const username = await input('Enter NGL Username: ');
   const question = await input('Enter the question/message: ');
   let spamAmount;
@@ -32,27 +32,34 @@ const input = (query) => new Promise(resolve => rl.question(query, resolve));
 
   const headers = {
     'Authority': 'ngl.link',
-    'Accept': '*/*',
+    'Accept': '/',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     'Origin': 'https://ngl.link',
     'Referer': 'https://ngl.link/' + username,
     'X-Requested-With': 'XMLHttpRequest'
   }
 
-  try {
-    for(let i = 1; i <= spamAmount; i++) {
+  let count = 0;
+  while (count < spamAmount) {
+    try {
       const { data } = await axios.post(url, formData, { headers });
+      count++;
       console.log({
         status: true,
-        amount: i,
+        amount: count,
         username,
         question,
         data
       });
+    } catch (e) {
+      if (e.response && e.response.status === 429) {
+        console.error('Rate limit exceeded. Waiting before retrying...');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      } else {
+        console.error('Error:', e.message);
+        break;
+      }
     }
-  } catch(e) {
-    console.error('Error:', e.message);
-  } finally {
-    rl.close();
   }
+  rl.close();
 })();
